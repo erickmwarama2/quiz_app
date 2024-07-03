@@ -13,15 +13,20 @@ class QuestionsSummary extends StatelessWidget {
       child: Column(
           children: summaryData.map((data) {
             return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(((data['question_index'] as int) + 1).toString(), textAlign: TextAlign.center,),
-                Column(children: [
-                  Text(data['question'].toString()),
-                  const SizedBox(height: 5,),
-                  Text(data['user_answer'] as String, textAlign: TextAlign.center,),
-                  Text(data['correct_answer'] as String, textAlign: TextAlign.center,),
-                ],)
+                Text(((data['question_index'] as int) + 1).toString(),),
+                const SizedBox(width: 30,),
+                Container(
+                  width: 400,
+                  padding: const EdgeInsets.all(10),
+                  child: Column(children: [
+                    Text(data['question'].toString()),
+                    const SizedBox(height: 5,),
+                    Text(data['user_answer'] as String, textAlign: TextAlign.center,),
+                    Text(data['correct_answer'] as String, textAlign: TextAlign.center,),
+                  ],),
+                )
               ],
             );
           }).toList(),
